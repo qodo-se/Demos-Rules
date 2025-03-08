@@ -1,5 +1,5 @@
-import styles from "./page.module.css";
-import { TodoItem } from "./todo-item-type";
+import styles from "../page.module.css";
+import { TodoItem } from "../todo-item/todo-item-type";
 
 interface Props {
     dataSource: Array<TodoItem>;

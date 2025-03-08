@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import { TodoItem } from "./todo-item-type";
 
 interface Props {

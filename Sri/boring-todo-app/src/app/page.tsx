@@ -1,9 +1,9 @@
 "use client";
 
 import styles from "./page.module.css";
-import { TodoItem } from "./todo-item-type";
-import TodoItemAdd from "./todo-item-add";
-import TodoList from "./todo-list";
+import { TodoItem } from "./todo-item/todo-item-type";
+import TodoItemAdd from "./todo-item/todo-item-add";
+import TodoList from "./todo-list/todo-list";
 import { useState } from "react";
 
 /**
