@@ -9,7 +9,8 @@ on:
       - main
 
 jobs:
-  boring-todo-api-tests:
+  boring-todo-api-test:
+    name: "🐍 boring-todo-api :: test"
     runs-on: ubuntu-latest
 
     defaults:
@@ -17,26 +18,27 @@ jobs:
         working-directory: Sri/boring-todo-api
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.13'
 
-      - name: Install Poetry
+      - name: Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
 
-      - name: Install dependencies
+      - name: Dependencies
         run: poetry install
 
-      - name: Run tests
+      - name: Test
         run: poetry run pytest
   
-  boring-todo-app-tests:
+  boring-todo-app-test:
+    name: "🌏 boring-todo-app :: test"
     runs-on: ubuntu-latest
 
     defaults:
@@ -44,16 +46,16 @@ jobs:
         working-directory: Sri/boring-todo-app
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Test
         run: npm test
