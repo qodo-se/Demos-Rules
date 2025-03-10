@@ -4,19 +4,24 @@ import styles from "./page.module.css";
 import { TodoItem } from "./todo-item/todo-item-type";
 import TodoItemAdd from "./todo-item/todo-item-add";
 import TodoList from "./todo-list/todo-list";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-/**
- * A React component that manages a todo list application.
- * 
- * @returns A page containing an input field for adding todos and a list of todo items
- */
 export default function Home() {
-  const [todos, setTodos] = useState<Array<TodoItem>>([
-    { "text": "hello world", "completed": false },
-    { "text": "foo bar", "completed": false },
-    { "text": "lorem ipsum", "completed": false },
-  ]);
+  const [todos, setTodos] = useState<Array<TodoItem>>([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/items");
+        const data = await response.json();
+        setTodos(data);
+      } catch (error) {
+        console.error("Error fetching todos:", error);
+      }
+    };
+
+    fetchTodos();
+  }, []);
 
   const handleSubmit = (text: string) => {
     const newTodo: TodoItem = { text, completed: false };
