@@ -14,7 +14,12 @@ packages = [{ include = "boring_todo_api", from = "src" }]
 pytest = "^8.3.5"
 httpx = "^0.28.1"
 pytest-asyncio = "^0.25.3"
+pytest-sugar = "^1.0.0"
+pytest-cov = "^6.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-v --tb=short --disable-warnings --cov=src/boring_todo_api --cov-report=term-missing"
