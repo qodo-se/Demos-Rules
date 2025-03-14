@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { TodoPage } from '../pages/todo-page';
 
-test.describe('Todo App Advanced Functionality', () => {
+test.describe('02 Advanced', () => {
     let todoPage: TodoPage;
 
     test.beforeEach(async ({ page }) => {
