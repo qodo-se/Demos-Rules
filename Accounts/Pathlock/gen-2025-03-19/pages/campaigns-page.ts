@@ -9,6 +9,7 @@ export class CampaignsPage {
   readonly saveButton: Locator;
   readonly saveNotificationSelector: string;
   readonly openMenuButton: Locator;
+  readonly complianceMenuItem: Locator;
   readonly adminMenuItem: Locator;
   readonly reportingMenuItem: Locator;
   readonly scheduledReportsMenuItem: Locator;
@@ -31,7 +32,8 @@ export class CampaignsPage {
     // ..as the underlying parser gets confused with the `$` in the selector
     this.saveButton = page.locator('input:not([tabindex="-1"])#ctl00_ctl00_ctl00_ctl00_ProfileTailorHeader1_ProfileTailorMenuPanel1_SaveReportSchedule');
     this.saveNotificationSelector = '#ctl00_ctl00_ctl00_ctl00_ProfileTailorHeader1_MessageBoxArea > div';
-    this.openMenuButton = page.locator('#ctl00_ctl00_div2 > ul > li:nth-child(1) > a > span.icon.anticon.icon-menuunfold');
+    this.openMenuButton = page.locator('#ctl00_ctl00_ctl00_ctl00_div2 > ul > li:nth-child(1) > a > span.sr-only');
+    this.complianceMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t148');
     this.adminMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t171');
     this.reportingMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t210');
     this.scheduledReportsMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t212');
@@ -57,22 +59,19 @@ export class CampaignsPage {
   }
 
   async openMenu() {
-    await this.openMenuButton.scrollIntoViewIfNeeded();
     await this.openMenuButton.click();
   }
 
   async navigateToAdmin() {
-    await this.adminMenuItem.scrollIntoViewIfNeeded();
+    await this.complianceMenuItem.click();
     await this.adminMenuItem.click();
   }
 
   async navigateToReporting() {
-    await this.reportingMenuItem.scrollIntoViewIfNeeded();
     await this.reportingMenuItem.click();
   }
 
   async navigateToScheduledReports() {
-    await this.scheduledReportsMenuItem.scrollIntoViewIfNeeded();
     await this.scheduledReportsMenuItem.click();
     await this.page.waitForURL('/App/Schedules/List.aspx');
   }

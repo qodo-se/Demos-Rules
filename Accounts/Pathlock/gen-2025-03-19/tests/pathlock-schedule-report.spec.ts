@@ -54,12 +54,24 @@ test.describe('Pathlock E2E Test', () => {
     await campaignsPage.navigateToAdmin();
 
     // Step 12: Click "Reporting"
-    await dashboardPage.navigateToReporting();
+    await campaignsPage.navigateToReporting();
 
     // Step 13: Click "Scheduled Reports"
-    await dashboardPage.navigateToScheduledReports();
+    await campaignsPage.navigateToScheduledReports();
 
     // Step 14: Click "Scheduled Reports" submenu
     await scheduledReportsPage.searchForReport("Test123");
+
+    // Step 15: Select the checkbox
+    await scheduledReportsPage.selectReport();
+
+    // Step 16: Click "Delete selected records"
+    await scheduledReportsPage.deleteSelectedReports();
+
+    // Step 17: Confirm the deletion
+    await scheduledReportsPage.confirmDelete();
+
+    // Step 18: Navigate to `https://flex-qa-plc.stage.pathlockgrc.com/App/LoginPage.aspx`
+    await page.goto('https://flex-qa-plc.stage.pathlockgrc.com/App/LoginPage.aspx');
   });
 });
