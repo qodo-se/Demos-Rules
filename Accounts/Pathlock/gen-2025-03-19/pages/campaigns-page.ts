@@ -30,13 +30,15 @@ export class CampaignsPage {
     // Example const element = page.locator('div[class$="value"]');
     // Therefore, when the `id` or `name` contains `$`, it will not be able to find the element
     // ..as the underlying parser gets confused with the `$` in the selector
+    // FIXME: Use data-attributes `data-test-id` for unique identification for E2E tests
+    // Example: <button data-test-id="save-button">Save</button>
     this.saveButton = page.locator('input:not([tabindex="-1"])#ctl00_ctl00_ctl00_ctl00_ProfileTailorHeader1_ProfileTailorMenuPanel1_SaveReportSchedule');
     this.saveNotificationSelector = '#ctl00_ctl00_ctl00_ctl00_ProfileTailorHeader1_MessageBoxArea > div';
     this.openMenuButton = page.locator('#ctl00_ctl00_ctl00_ctl00_div2 > ul > li:nth-child(1) > a > span.sr-only');
-    this.complianceMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t148');
-    this.adminMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t171');
-    this.reportingMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t210');
-    this.scheduledReportsMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t212');
+    this.complianceMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t153');
+    this.adminMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t176');
+    this.reportingMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t215');
+    this.scheduledReportsMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t217');
   }
 
   async hoverOverExport() {
