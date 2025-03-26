@@ -35,10 +35,10 @@ export class CampaignsPage {
     this.saveButton = page.locator('input:not([tabindex="-1"])#ctl00_ctl00_ctl00_ctl00_ProfileTailorHeader1_ProfileTailorMenuPanel1_SaveReportSchedule');
     this.saveNotificationSelector = '#ctl00_ctl00_ctl00_ctl00_ProfileTailorHeader1_MessageBoxArea > div';
     this.openMenuButton = page.locator('#ctl00_ctl00_ctl00_ctl00_div2 > ul > li:nth-child(1) > a > span.sr-only');
-    this.complianceMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t153');
-    this.adminMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t176');
-    this.reportingMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t215');
-    this.scheduledReportsMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t217');
+    this.complianceMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t156');
+    this.adminMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t179');
+    this.reportingMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t218');
+    this.scheduledReportsMenuItem = page.locator('#ctl00_ctl00_ctl00_ctl00_TreeView1t220');
   }
 
   async hoverOverExport() {
