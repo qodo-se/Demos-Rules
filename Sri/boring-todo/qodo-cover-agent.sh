@@ -29,8 +29,20 @@ PATH_COVERAGE_REPORT=$(pwd)/coverage.xml
 for file in $PATH_SOURCES/*.py; do
   # get the filename without the path
   filename=$(basename "$file")
+
   # get the filename without the extension
   filename_no_ext="${filename%.*}"
+
+  # skip __init__.py
+  if [ "$filename" == "__init__.py" ]; then
+    continue
+  fi
+
+  # skip if file starts with test_
+  if [[ "$filename" == test_* ]]; then
+    continue
+  fi
+
   PATH_TEST_FILE="$PATH_TESTS/test_$filename_no_ext.py"
   # create test file if it doesn't exist
   if [ ! -f "$PATH_TEST_FILE" ]; then
