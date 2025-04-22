@@ -11,17 +11,18 @@ else
   exit 1
 fi
 
+# Configuration
+echo "🟪🟪 Configuration"
+
 PWD_START=$(pwd)
 PATH_POETRY_PROJECT=$(pwd)/boring-todo-api
 MODEL="gpt-4.1"
-DESIRED_COVERAGE=90
+DESIRED_COVERAGE_PERCENT=90
 MAX_ITERATIONS=5
-
-echo "🟪🟪 Configuration"
 
 echo "Target project: \`$PATH_POETRY_PROJECT\`"
 echo "Model: \`$MODEL\`"
-echo "Desired coverage: \`$DESIRED_COVERAGE\`"
+echo "Desired coverage: \`$DESIRED_COVERAGE_PERCENT\`"
 echo "Max iterations: \`$MAX_ITERATIONS\`"
 echo ""
 
@@ -98,7 +99,7 @@ find "$PATH_SOURCES" -type f -name "*.py" | while read -r file; do
     --source-file-path="$file" \
     --test-file-path="$PATH_TEST_FILE" \
     --test-command="poetry run pytest" \
-    --desired-coverage $DESIRED_COVERAGE \
+    --desired-coverage $DESIRED_COVERAGE_PERCENT \
     --max-iterations $MAX_ITERATIONS \
     --additional-instructions="Always include docstrings"
 done
