@@ -39,12 +39,18 @@ find "$PATH_SOURCES" -type f -name "*.py" | while read -r file; do
     continue
   fi
 
+  # skip if parent directory is tests
+  if [[ "$file" == *"/tests/"* ]]; then
+    echo "⏩ Skipping $filename — test directory"
+    continue
+  fi
+
   # skip if file starts with test_
   if [[ "$filename" == test_* ]]; then
     echo "⏩ Skipping $filename — test file"
     continue
   fi
-
+  
   # get relative path from $PATH_SOURCES
   rel_path=$(dirname "${file#$PATH_SOURCES/}")
   
