@@ -20,10 +20,10 @@ MAX_ITERATIONS=5
 
 echo "🟪🟪 Configuration"
 
-echo "Target project: `$PATH_POETRY_PROJECT`"
-echo "Model: `$MODEL`"
-echo "Desired coverage: `$DESIRED_COVERAGE`"
-echo "Max iterations: `$MAX_ITERATIONS`"
+echo "Target project: \`$PATH_POETRY_PROJECT\`"
+echo "Model: \`$MODEL\`"
+echo "Desired coverage: \`$DESIRED_COVERAGE\`"
+echo "Max iterations: \`$MAX_ITERATIONS\`"
 echo ""
 
 echo "🟪🟪 Starting Qodo Cover Agent"
@@ -45,19 +45,19 @@ find "$PATH_SOURCES" -type f -name "*.py" | while read -r file; do
 
   # skip __init__.py
   if [ "$filename" == "__init__.py" ]; then
-    echo "⏩ Skipping `$filename` — __init__.py"
+    echo "⏩ Skipping \`$filename\` — __init__.py"
     continue
   fi
 
   # skip if parent directory is tests
   if [[ "$file" == *"/tests/"* ]]; then
-    echo "⏩ Skipping `$filename` — test directory"
+    echo "⏩ Skipping \`$filename\` — test directory"
     continue
   fi
 
   # skip if file starts with test_
   if [[ "$filename" == test_* ]]; then
-    echo "⏩ Skipping `$filename` — test file"
+    echo "⏩ Skipping \`$filename\` — test file"
     continue
   fi
   
@@ -66,7 +66,7 @@ find "$PATH_SOURCES" -type f -name "*.py" | while read -r file; do
 
   echo ""
   echo ""
-  echo "🟪🟪 Reviewing `$filename`"
+  echo "🟪🟪 Reviewing \`$filename\`"
   echo ""
   
   # if file is at the root of $PATH_SOURCES, rel_path will be empty
@@ -82,11 +82,11 @@ find "$PATH_SOURCES" -type f -name "*.py" | while read -r file; do
   
   # create test file if it doesn't exist
   if [ ! -f "$PATH_TEST_FILE" ]; then
-    echo "📄 Creating `$PATH_TEST_FILE`"
+    echo "📄 Creating \`$PATH_TEST_FILE\`"
     echo ""
     touch "$PATH_TEST_FILE"
   else
-    echo "📄 Test found `$PATH_TEST_FILE`"
+    echo "📄 Test found \`$PATH_TEST_FILE\`"
     echo ""
   fi
   
