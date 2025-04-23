@@ -219,7 +219,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 
 [pr_update_changelog] # /update_changelog #
 # push_changelog_changes = false
-# extra_instructions = ""
+extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
 # add_pr_link = true
 # skip_ci_on_push = true
 
