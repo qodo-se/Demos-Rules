@@ -88,7 +88,7 @@
 
 # 🟪 general options
 # persistent_comment = true
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # final_update_message = true
 
 # 🟪 review labels
@@ -111,7 +111,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 # add_original_user_description = true
 # generate_ai_title = false
 # use_bullet_points = true
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # enable_pr_type = true
 # final_update_message = true
 # enable_help_text = false
@@ -153,7 +153,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 # commitable_code_suggestions = false
 # dual_publishing_score_threshold = -1 # -1 to disable, [0-10] to set the threshold (> = ) for publishing a code suggestion both in a table and as commitable
 # focus_only_on_problems = true
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # enable_help_text = false
 # enable_chat_text = false
 # persistent_comment = true
@@ -208,7 +208,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 # 🟪🟪🟪
 
 [pr_add_docs] # /add_docs #
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # docs_style = "Sphinx" # "Google Style with Args, Returns, Attributes...etc", "Numpy Style", "Sphinx Style", "PEP257", "reStructuredText"
 # file = ""              # in case there are several components with the same name, you can specify the relevant file
 # class_name = ""        # in case there are several methods with the same name in the same file, you can specify the relevant class name
@@ -219,7 +219,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 
 [pr_update_changelog] # /update_changelog #
 # push_changelog_changes = false
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # add_pr_link = true
 # skip_ci_on_push = true
 
@@ -235,7 +235,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 # 🟪🟪🟪
 
 [pr_test] # /test #
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # testing_framework = "" # specify the testing framework you want to use
 # num_tests = 3            # number of tests to generate. max 5.
 # avoid_mocks = true       # if true, the generated tests will prefer to use real objects instead of mocks
@@ -249,7 +249,7 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 
 [pr_improve_component] # /improve_component #
 # num_code_suggestions = 4
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # file = ""              # in case there are several components with the same name, you can specify the relevant file
 # class_name = ""        # in case there are several methods with the same name in the same file, you can specify the relevant class name
 
@@ -372,12 +372,11 @@ extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear.
 
 [bitbucket_server]
 # url = "https://git.bitbucket.com"
-url = ""
-pr_commands = [
-    "/describe --pr_description.final_update_message = false",
-    "/review",
-    "/improve --pr_code_suggestions.commitable_code_suggestions = true",
-]
+# pr_commands = [
+#     "/describe --pr_description.final_update_message = false",
+#     "/review",
+#     "/improve --pr_code_suggestions.commitable_code_suggestions = true",
+# ]
 
 # 🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪
 # 🟪🟪🟪 Local
@@ -469,7 +468,7 @@ pr_commands = [
 [auto_best_practices]
 # enable_auto_best_practices = true # public - general flag to disable all auto best practices usage
 # utilize_auto_best_practices = true # public - disable usage of auto best practices in the 'improve' tool
-extra_instructions = "Speak like a pirate, and use emojis. Be concise and clear."
+extra_instructions = "Use emojis. Be verbose. Repeat everything in English (en-US) and German (de-DE)"
 # content = ""
 # max_patterns = 5 # max number of patterns to be detected
 
