@@ -109,12 +109,12 @@ enable_help_text = false # Determines whether to include help text in the PR rev
 [pr_description] # /describe #
 publish_labels = true
 # add_original_user_description = true
-generate_ai_title = true
+# generate_ai_title = true
 # use_bullet_points = true
 extra_instructions = "Speak German and English in your responses. Use emojis. Be verbose, and then include a ELI5 and a TLDR version of the response."
 # enable_pr_type = true
 # final_update_message = true
-enable_help_text = true
+# enable_help_text = true
 # enable_help_comment = true
 
 # 🟪 describe as comment
@@ -125,7 +125,7 @@ enable_help_text = true
 # enable_semantic_files_types = true
 # collapsible_file_list = 'adaptive' # true, false, 'adaptive'
 # collapsible_file_list_threshold = 6
-inline_file_summary = 'table' # false, true, 'table'
+inline_file_summary = true # false, true, 'table'
 
 # 🟪 markers
 use_description_markers = true
