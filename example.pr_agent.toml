@@ -6,8 +6,8 @@
 [config]
 
 # 🟪 model
-# model = "o4-mini"
-# fallback_models = ["gpt-4.1"]
+model="gemini-2.5-pro"
+fallback_models = ["gpt-4.1"]
 # model_weak = "gpt-4o" # optional, a weaker model to use for some easier tasks
 # custom_reasoning_model = false # when true, disables system messages and temperature controls for models that don't support chat-style inputs
 # token limits
