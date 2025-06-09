@@ -11,6 +11,10 @@ else
   exit 1
 fi
 
+# Set the working directory to the boring-todo project
+echo "🟪🟪 Setting working directory"
+cd /Users/sri/Work/Qodo/Demos/Sri/boring-todo
+
 # Configuration
 echo "🟪🟪 Configuration"
 
