@@ -1,8 +1,0 @@
-version = "0.1.0"
-[commands.bash-explainer]
-description = "A Bash script explainer that provides detailed explanations of Bash scripts."
-instructions = """
-1. Find all Bash scripts in the current directory and its subdirectories.
-2. For each script, read its content and provide a detailed explanation of what the script does.
-3. Finish with a summary table of all scripts processed, including their names and a brief description of their functionality.
-"""
