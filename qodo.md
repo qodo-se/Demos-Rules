@@ -5,6 +5,7 @@
 **Qodo SE Demos** is a comprehensive collection of demonstration projects and test scenarios designed for Qodo Sales Engineers to showcase AI-powered development tools and testing capabilities across different client accounts and use cases.
 
 **Key responsibilities:**
+
 - Provide ready-to-use demo applications for client presentations
 - Demonstrate AI-powered testing and code generation capabilities
 - Showcase integration with various technologies and frameworks
@@ -15,6 +16,7 @@
 ## 🏗️ Architecture Overview
 
 ### System Context
+
 ```
 [Sales Engineers] → [Demo Repository] → [Client Presentations]
                           ↓
@@ -24,12 +26,14 @@
 ```
 
 ### Key Components
+
 - **Account-Specific Demos** - Tailored demonstrations for specific client accounts (Pathlock, Analog, Postman, VegaSecurity)
 - **Reference Applications** - Full-stack demo applications (boring-todo) with API and frontend components
 - **Compliance Testing** - Security and compliance validation scenarios (SOC2, GDPR, OWASP, HIPAA, PCI-DSS)
 - **AI Integration Examples** - Demonstrations of AI-powered code generation, testing, and review capabilities
 
 ### Data Flow
+
 1. **Sales Engineers access repository** for client-specific demo materials
 2. **Demo applications are launched** using provided scripts and configurations
 3. **AI tools are demonstrated** on real codebases with various technologies
@@ -76,18 +80,21 @@ Demos/
 ## 🔧 Technology Stack
 
 ### Core Technologies
+
 - **Languages:** Python (3.13+), TypeScript/JavaScript, Shell scripting
 - **Backend Framework:** FastAPI - Modern, fast Python web framework for APIs
 - **Frontend Framework:** Next.js (15.3+) with React (19.0+) - Full-stack React framework
 - **Testing Frameworks:** Playwright, pytest, Jest - Comprehensive testing across languages
 
 ### Key Libraries
+
 - **FastAPI & Uvicorn** - High-performance async Python web framework and ASGI server
 - **Next.js & React** - Modern React framework with server-side rendering capabilities
 - **Playwright** - Cross-browser end-to-end testing framework
 - **pytest** - Python testing framework with extensive plugin ecosystem
 
 ### Development Tools
+
 - **Poetry** - Python dependency management and packaging
 - **VS Code Workspace** - Integrated development environment configuration
 - **GitHub Actions** - Continuous integration and deployment
@@ -98,11 +105,13 @@ Demos/
 ## 🌐 External Dependencies
 
 ### Required Services
+
 - **GitHub/GitLab/Bitbucket** - Version control and CI/CD integration for PR agent demos
 - **Qodo AI Services** - AI-powered code analysis, testing, and review capabilities
 - **Package Registries** - npm, PyPI for dependency management in demos
 
 ### Optional Integrations
+
 - **Cloudsmith/myAnalog** - Private package repository access for enterprise demos
 - **Various Client Systems** - Integration endpoints for account-specific demonstrations
 
@@ -111,6 +120,7 @@ Demos/
 ## 🔄 Common Workflows
 
 ### Demo Application Startup
+
 1. **Navigate to boring-todo directory**
 2. **Launch API server:** `./run-api.sh` (FastAPI on port 8000)
 3. **Launch frontend:** `./run-app.sh` (Next.js on port 3001)
@@ -119,6 +129,7 @@ Demos/
 **Code path:** `Scripts` → `Poetry/npm install` → `Server startup` → `Demo ready`
 
 ### Client Demo Preparation
+
 1. **Select account-specific directory** (e.g., `Accounts/Pathlock/`)
 2. **Review test scenarios and documentation**
 3. **Execute setup scripts** for environment preparation
@@ -127,6 +138,7 @@ Demos/
 **Code path:** `Account selection` → `Environment setup` → `AI tool integration` → `Live demonstration`
 
 ### Compliance Testing Demo
+
 1. **Configure PR agent** with compliance rules from `pr_compliance_checklist.yaml`
 2. **Create sample PR** with code changes
 3. **Demonstrate AI-powered compliance checking** (SOC2, GDPR, OWASP, etc.)
@@ -139,11 +151,13 @@ Demos/
 ## 📈 Performance & Scale
 
 ### Performance Considerations
+
 - **Fast startup times** - Demo applications designed for quick launch during presentations
 - **Lightweight dependencies** - Minimal setup requirements for reliable demonstrations
 - **Cross-platform compatibility** - Works on macOS, Linux, and Windows environments
 
 ### Monitoring
+
 - **CI/CD pipelines** - Automated testing ensures demo reliability
 - **Health checks** - Built-in validation for demo application status
 - **Error handling** - Graceful degradation for network or dependency issues
@@ -153,15 +167,13 @@ Demos/
 ## 🚨 Things to Be Careful About
 
 ### 🔒 Security Considerations
+
 - **No real credentials** - All demo credentials are test/example values only
 - **Compliance examples** - Real compliance rules but applied to demo code only
 - **AI model access** - Requires proper API keys for AI-powered features
 
 ### Demo-Specific Warnings
+
 - **Port conflicts** - API (8000) and App (3001) ports must be available
 - **Network dependencies** - Some demos require internet access for AI services
 - **Client data** - Never use real client data in demonstrations
-
----
-
-*Updated at: 2025-01-27 UTC*
