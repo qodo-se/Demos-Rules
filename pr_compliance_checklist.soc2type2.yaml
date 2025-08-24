@@ -1,0 +1,72 @@
+pr_compliances:
+  - title: "Soc2Type2 — Input Validation"
+    compliance_label: true
+    objective: "To prevent injection attacks (e.g., SQL injection, XSS) by validating and sanitizing all user-supplied input."
+    success_criteria: "All input fields (e.g., forms, API parameters, URL queries) have validation logic. Data is sanitized or parameterized before being used in queries or rendered in the UI."
+    failure_criteria: "User input is used directly in database queries or rendered in HTML without proper validation, sanitization, or escaping, leading to potential injection vulnerabilities."
+
+  - title: "Soc2Type2 — Secure Development Practices (OWASP Top 10)"
+    compliance_label: true
+    objective: "To adhere to industry-standard secure coding practices to minimize common security vulnerabilities."
+    success_criteria: "The code shows awareness of common vulnerabilities like those listed in the OWASP Top 10, and includes countermeasures (e.g., proper session management, secure headers, protection against CSRF)."
+    failure_criteria: "The code exhibits patterns of common vulnerabilities (e.g., insecure direct object references, security misconfiguration) without mitigation."
+
+  - title: "Soc2Type2 — Principle of Least Privilege"
+    compliance_label: true
+    objective: "To ensure that users and system components have only the minimum levels of access—or permissions—needed to perform their functions."
+    success_criteria: "Access to resources (files, database records, API endpoints) is restricted by default. Permissions are explicitly granted based on the user's role and need."
+    failure_criteria: "Users or services have overly broad permissions, such as admin-level access for routine tasks, or can access data/functions they are not authorized for."
+
+  - title: "Soc2Type2 — System Resilience (Fallbacks, Retries, Graceful Degradation)"
+    compliance_label: true
+    objective: "To ensure the system remains available and functional, even when dependencies or components fail."
+    success_criteria: "The code includes mechanisms like retry logic for transient network errors, fallbacks to alternative data sources or services, and can degrade gracefully (e.g., disabling non-essential features) during outages."
+    failure_criteria: "A failure in a single dependency (e.g., a third-party API) causes a complete service outage or unhandled exceptions."
+
+  - title: "Soc2Type2 — Health Checks and Monitoring"
+    compliance_label: true
+    objective: "To provide visibility into the application's health and performance, enabling quick detection and diagnosis of issues."
+    success_criteria: "The application exposes a health check endpoint (e.g., `/healthz`) that reports the status of critical dependencies. Custom metrics and logs are integrated for monitoring."
+    failure_criteria: "There are no endpoints or hooks to check the application's health, making it difficult to monitor or automate recovery."
+
+  - title: "Soc2Type2 — Role-Based Access Control (RBAC)"
+    compliance_label: true
+    objective: "To enforce authorization policies by restricting access to operations and data based on user roles."
+    success_criteria: "An RBAC system is implemented. Before performing sensitive actions or accessing data, the code checks if the user's role has the required permissions."
+    failure_criteria: "Access control checks are missing, or are based on easily spoofable attributes instead of a centrally managed role system. All users can access all features."
+
+  - title: "Soc2Type2 — Audit Logging for Sensitive Operations"
+    compliance_label: true
+    objective: "To maintain a secure audit trail of all actions performed on sensitive data or critical system functions."
+    success_criteria: "Actions such as creating, viewing, updating, or deleting sensitive data are logged. The log entry includes who performed the action, what was changed, and when it occurred."
+    failure_criteria: "Sensitive operations are not logged, or logs lack sufficient detail to reconstruct the event, hindering security audits and incident response."
+
+  - title: "Soc2Type2 — Data Integrity Checks"
+    compliance_label: true
+    objective: "To ensure the accuracy and consistency of data throughout its lifecycle."
+    success_criteria: "The code includes validation steps at data entry points, and integrity checks (e.g., checksums, foreign key constraints) are used to prevent data corruption."
+    failure_criteria: "Data is accepted without validation, potentially leading to corruption, incorrect processing, or system errors."
+
+  - title: "Soc2Type2 — Deterministic Code Behavior"
+    compliance_label: true
+    objective: "To ensure that code produces consistent and predictable outcomes for the same set of inputs, which is crucial for data processing integrity."
+    success_criteria: "Functions are pure where possible. The code avoids reliance on non-deterministic factors like time-of-day or un-ordered data structures for critical logic. Comprehensive unit and integration tests cover edge cases."
+    failure_criteria: "The code produces different results for the same inputs under identical conditions, leading to unreliable data processing and potential integrity issues."
+
+  - title: "Generic — Secure Logging Practices"
+    compliance_label: true
+    objective: "To ensure logs are useful for debugging and auditing without exposing sensitive information like PII, PHI, or cardholder data."
+    success_criteria: "Logs are structured (e.g., JSON) for easy auditing. No sensitive data (PII, PHI, secrets, etc.) is present in any log output, at any log level."
+    failure_criteria: "Sensitive data such as passwords, API keys, or personal user information is found in application logs. Logs are unstructured, making them difficult to parse and monitor effectively."
+
+  - title: "Generic — Comprehensive Audit Trails"
+    compliance_label: true
+    objective: "To create a detailed and reliable record of critical system actions for security analysis and compliance."
+    success_criteria: "All critical actions (e.g., read/write/delete of sensitive data, permission changes, user login events) are logged. Each log entry includes a user ID, timestamp, a clear description of the action, and the outcome."
+    failure_criteria: "Critical actions are not logged, or the audit logs lack essential context, such as which user performed the action or what the action entailed, making it impossible to reconstruct events."
+
+  - title: "Generic — Secure Error Handling"
+    compliance_label: true
+    objective: "To prevent the leakage of sensitive system information through error messages while providing sufficient detail for internal debugging."
+    success_criteria: "User-facing errors are generic and do not expose internal implementation details (e.g., 'An internal error occurred'). Detailed error information, including stack traces, is only written to secure, internal logs."
+    failure_criteria: "Stack traces, database error messages, or other internal system details are exposed to the end-user. Error messages inadvertently reveal sensitive information, such as the existence of a user account."

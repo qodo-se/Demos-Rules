@@ -1,0 +1,30 @@
+pr_compliances:
+  - title: "PCIDSS — Cardholder Data Protection"
+    compliance_label: true
+    objective: "To protect cardholder data by avoiding storage where possible, encrypting it when stored, and masking it when displayed."
+    success_criteria: "The code does not store full PANs (Primary Account Numbers). If storage is unavoidable, the data is encrypted using strong cryptography (e.g., AES-256). PANs are masked (e.g., showing only the last four digits) in logs and user interfaces."
+    failure_criteria: "Full credit card numbers are stored in plaintext. PANs are exposed in application logs or displayed in full on the UI, creating a high risk of data compromise."
+
+  - title: "PCIDSS — Secure Authentication"
+    compliance_label: true
+    objective: "To enforce strong authentication for access to cardholder data environments."
+    success_criteria: "The code enforces strong password policies (e.g., complexity, history, rotation). Session management is secure, with timeouts and proper invalidation. Two-factor authentication is implemented for accessing sensitive components."
+    failure_criteria: "Weak password policies are in place. Sessions do not time out or are vulnerable to hijacking. Single-factor authentication is used for critical systems, failing to protect against credential theft."
+
+  - title: "Generic — Secure Logging Practices"
+    compliance_label: true
+    objective: "To ensure logs are useful for debugging and auditing without exposing sensitive information like PII, PHI, or cardholder data."
+    success_criteria: "Logs are structured (e.g., JSON) for easy auditing. No sensitive data (PII, PHI, secrets, etc.) is present in any log output, at any log level."
+    failure_criteria: "Sensitive data such as passwords, API keys, or personal user information is found in application logs. Logs are unstructured, making them difficult to parse and monitor effectively."
+
+  - title: "Generic — Comprehensive Audit Trails"
+    compliance_label: true
+    objective: "To create a detailed and reliable record of critical system actions for security analysis and compliance."
+    success_criteria: "All critical actions (e.g., read/write/delete of sensitive data, permission changes, user login events) are logged. Each log entry includes a user ID, timestamp, a clear description of the action, and the outcome."
+    failure_criteria: "Critical actions are not logged, or the audit logs lack essential context, such as which user performed the action or what the action entailed, making it impossible to reconstruct events."
+
+  - title: "Generic — Secure Error Handling"
+    compliance_label: true
+    objective: "To prevent the leakage of sensitive system information through error messages while providing sufficient detail for internal debugging."
+    success_criteria: "User-facing errors are generic and do not expose internal implementation details (e.g., 'An internal error occurred'). Detailed error information, including stack traces, is only written to secure, internal logs."
+    failure_criteria: "Stack traces, database error messages, or other internal system details are exposed to the end-user. Error messages inadvertently reveal sensitive information, such as the existence of a user account."

@@ -1,0 +1,77 @@
+pr_compliances:
+  - title: "OWASP — Injection"
+    compliance_label: true
+    objective: "To prevent injection attacks (SQL, NoSQL, OS, etc.) by ensuring all data is treated as untrusted and properly handled."
+    success_criteria: "The code uses parameterized queries or prepared statements for all database interactions. All user-supplied input (including headers, cookies, and URL parameters) is validated and sanitized before use."
+    failure_criteria: "User input is directly concatenated into database queries or command-line executions. Input is not validated or sanitized, creating a potential for injection."
+
+  - title: "OWASP — Broken Authentication"
+    compliance_label: true
+    objective: "To implement and enforce proper authentication and session management."
+    success_criteria: "Passwords are not stored in plaintext; they are hashed using a strong, salted algorithm (e.g., bcrypt, Argon2). Sessions are invalidated upon logout and password changes. Multi-factor authentication is used where appropriate."
+    failure_criteria: "Passwords are stored in plaintext or with weak hashing. Session tokens are not invalidated or are predictable. Lack of protection against brute-force attacks."
+
+  - title: "OWASP — Sensitive Data Exposure"
+    compliance_label: true
+    objective: "To protect sensitive data (PII, credentials, financial info) from being exposed, both in transit and at rest."
+    success_criteria: "All data transmission uses TLS (HTTPS). Sensitive data is encrypted at rest. Sensitive information is never logged. Secure headers (e.g., HSTS) are implemented."
+    failure_criteria: "Data is transmitted over unencrypted channels (HTTP). Sensitive data is stored in plaintext. Secrets or PII are present in logs."
+
+  - title: "OWASP — XML External Entities (XXE)"
+    compliance_label: true
+    objective: "To prevent attacks related to the processing of XML data from untrusted sources."
+    success_criteria: "XML external entity processing is disabled in all XML parsers. The application prefers safer data formats like JSON where possible. All XML input is validated against a schema."
+    failure_criteria: "The XML parser is configured to process external entities from untrusted sources, creating a vulnerability to information disclosure or SSRF."
+
+  - title: "OWASP — Broken Access Control"
+    compliance_label: true
+    objective: "To ensure that users can only act within their intended permissions."
+    success_criteria: "Access control is enforced on the server-side for every request. The principle of 'deny by default' is applied. Authorization checks are performed based on the user's session and role, not on parameters controlled by the user."
+    failure_criteria: "Access control decisions are made on the client-side. Users can access unauthorized functionality by manipulating URLs or parameters (Insecure Direct Object References). Default access is permissive."
+
+  - title: "OWASP — Security Misconfiguration"
+    compliance_label: true
+    objective: "To harden the application and its underlying components against attacks."
+    success_criteria: "Default accounts and credentials have been removed or changed. Unnecessary features, ports, and services are disabled. Security headers (e.g., CSP, X-Frame-Options) are configured correctly. Error messages are generic and do not leak system information."
+    failure_criteria: "The application runs with debug features enabled in production. Directory listing is enabled. Default credentials are in use. Verbose error messages reveal sensitive information."
+
+  - title: "OWASP — Cross-Site Scripting (XSS)"
+    compliance_label: true
+    objective: "To prevent malicious scripts from being injected into and executed in the user's browser."
+    success_criteria: "All untrusted data is properly escaped or encoded before being rendered in the UI. A Content Security Policy (CSP) is implemented to restrict the sources of executable scripts."
+    failure_criteria: "User-supplied data is rendered directly in the browser without output encoding, allowing for script injection. The application lacks a restrictive CSP."
+
+  - title: "OWASP — Insecure Deserialization"
+    compliance_label: true
+    objective: "To prevent remote code execution or other attacks resulting from deserializing untrusted data."
+    success_criteria: "The application avoids deserializing objects from untrusted sources. If deserialization is necessary, it uses safe data formats and performs integrity checks (e.g., digital signatures) on the serialized data."
+    failure_criteria: "The application deserializes data from untrusted clients without sufficient validation, potentially allowing object injection and remote code execution."
+
+  - title: "OWASP — Using Components with Known Vulnerabilities"
+    compliance_label: true
+    objective: "To ensure that all third-party libraries, frameworks, and components are secure and up-to-date."
+    success_criteria: "A process is in place to regularly scan for and identify vulnerable dependencies (e.g., using Dependabot, Snyk). Patches for known vulnerabilities are applied in a timely manner. Unused dependencies are removed."
+    failure_criteria: "The application uses libraries or components with known, unpatched security vulnerabilities. There is no inventory or scanning process for dependencies."
+
+  - title: "OWASP — Insufficient Logging & Monitoring"
+    compliance_label: true
+    objective: "To ensure that security events are logged and monitored to enable timely detection and response to attacks."
+    success_criteria: "All authentication events, access control failures, and server-side input validation errors are logged with sufficient user context. Logs are stored securely and are monitored for suspicious activity."
+    failure_criteria: "Security events are not logged, or logs lack the necessary detail to identify the attacker. There is no monitoring or alerting for suspicious log entries."
+  - title: "Generic — Secure Logging Practices"
+    compliance_label: true
+    objective: "To ensure logs are useful for debugging and auditing without exposing sensitive information like PII, PHI, or cardholder data."
+    success_criteria: "Logs are structured (e.g., JSON) for easy auditing. No sensitive data (PII, PHI, secrets, etc.) is present in any log output, at any log level."
+    failure_criteria: "Sensitive data such as passwords, API keys, or personal user information is found in application logs. Logs are unstructured, making them difficult to parse and monitor effectively."
+
+  - title: "Generic — Comprehensive Audit Trails"
+    compliance_label: true
+    objective: "To create a detailed and reliable record of critical system actions for security analysis and compliance."
+    success_criteria: "All critical actions (e.g., read/write/delete of sensitive data, permission changes, user login events) are logged. Each log entry includes a user ID, timestamp, a clear description of the action, and the outcome."
+    failure_criteria: "Critical actions are not logged, or the audit logs lack essential context, such as which user performed the action or what the action entailed, making it impossible to reconstruct events."
+
+  - title: "Generic — Secure Error Handling"
+    compliance_label: true
+    objective: "To prevent the leakage of sensitive system information through error messages while providing sufficient detail for internal debugging."
+    success_criteria: "User-facing errors are generic and do not expose internal implementation details (e.g., 'An internal error occurred'). Detailed error information, including stack traces, is only written to secure, internal logs."
+    failure_criteria: "Stack traces, database error messages, or other internal system details are exposed to the end-user. Error messages inadvertently reveal sensitive information, such as the existence of a user account."

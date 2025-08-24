@@ -1,0 +1,30 @@
+pr_compliances:
+  - title: "HIPAA — PHI Handling and Audit Logging"
+    compliance_label: true
+    objective: "To prevent exposure of Protected Health Information (PHI) in logs and ensure all access to PHI is traceable."
+    success_criteria: "The code does not log any data that could be considered PHI. All access to PHI (read, create, update, delete) is recorded in a secure, immutable audit log, including user ID, timestamp, and the nature of the access."
+    failure_criteria: "PHI is written to application logs, even at debug levels. Access to PHI is not logged, or the audit logs are incomplete, making it impossible to trace who accessed what and when."
+
+  - title: "HIPAA — PHI Encryption (In-Transit & At-Rest)"
+    compliance_label: true
+    objective: "To protect the confidentiality and integrity of PHI by using strong, industry-standard encryption for all data, both while it is being transmitted and while it is stored."
+    success_criteria: "All network communication transmitting PHI uses strong, modern TLS (1.2 or higher). PHI stored in databases, file systems, or other persistent storage is encrypted at rest using a strong algorithm (e.g., AES-256)."
+    failure_criteria: "PHI is transmitted over unencrypted channels (e.g., HTTP). PHI is stored in plaintext in the database or on disk. Weak or outdated encryption protocols/ciphers are used."
+
+  - title: "Generic — Secure Logging Practices"
+    compliance_label: true
+    objective: "To ensure logs are useful for debugging and auditing without exposing sensitive information like PII, PHI, or cardholder data."
+    success_criteria: "Logs are structured (e.g., JSON) for easy auditing. No sensitive data (PII, PHI, secrets, etc.) is present in any log output, at any log level."
+    failure_criteria: "Sensitive data such as passwords, API keys, or personal user information is found in application logs. Logs are unstructured, making them difficult to parse and monitor effectively."
+
+  - title: "Generic — Comprehensive Audit Trails"
+    compliance_label: true
+    objective: "To create a detailed and reliable record of critical system actions for security analysis and compliance."
+    success_criteria: "All critical actions (e.g., read/write/delete of sensitive data, permission changes, user login events) are logged. Each log entry includes a user ID, timestamp, a clear description of the action, and the outcome."
+    failure_criteria: "Critical actions are not logged, or the audit logs lack essential context, such as which user performed the action or what the action entailed, making it impossible to reconstruct events."
+
+  - title: "Generic — Secure Error Handling"
+    compliance_label: true
+    objective: "To prevent the leakage of sensitive system information through error messages while providing sufficient detail for internal debugging."
+    success_criteria: "User-facing errors are generic and do not expose internal implementation details (e.g., 'An internal error occurred'). Detailed error information, including stack traces, is only written to secure, internal logs."
+    failure_criteria: "Stack traces, database error messages, or other internal system details are exposed to the end-user. Error messages inadvertently reveal sensitive information, such as the existence of a user account."
