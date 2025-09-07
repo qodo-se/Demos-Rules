@@ -1,0 +1,19 @@
+pr_compliances:
+
+  - title: ".."
+    compliance_label: true
+    objective: "..."
+    success_criteria: "..."
+    failure_criteria: "..."
+
+  - title: ".."
+    compliance_label: true
+    objective: "..."
+    success_criteria: "..."
+    failure_criteria: "..."
+
+  - title: ".."
+    compliance_label: true
+    objective: "..."
+    success_criteria: "..."
+    failure_criteria: "..."
