@@ -78,6 +78,8 @@
         ]
     },
     "settings": {
-        "codium.codeCompletion.enable": false
+        "codium.codeCompletion.enable": false,
+        "slidev.port": 3030,
+        "slidev.preview-sync": true
     },
 }
