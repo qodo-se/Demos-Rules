@@ -1,0 +1,91 @@
+flowchart TB
+  %% External surfaces
+  subgraph Devs[Developers]
+    VS[VS Code Extension]
+    JB[JetBrains Plugin]
+  end
+
+  subgraph Git[Git Providers]
+    GH[GitHub / GH Enterprise]
+    GL[GitLab]
+    BB[Bitbucket Data Center]
+  end
+
+  subgraph LLMs[LLM / Gateway]
+    OA[OpenAI]
+    Anth[Anthropic]
+    Vtx[Vertex AI]
+    AWSB[Bedrock]
+  end
+
+  %% Platform
+  subgraph K8s[Kubernetes - Helm]
+    direction TB
+
+    %% Qodo Aware
+    subgraph Aware[Qodo Aware - RAG]
+      METADATA[metadata-service<br/>:8000 /api/v1/health]
+      INDEXER[rag-indexer<br/>:3000 /api/v1/indexer/health<br/>Cron: reindex 0 3 * * *]
+      RETR[context-retriever<br/>:8001 /v1/context/health]
+      MCP[context-retriever-mcp - opt<br/>Ingress path /mcp]
+      AwareSecret[Secret: qodo-aware-secrets]
+      AwareCM[ConfigMaps]
+      AwareSecret --> METADATA & INDEXER & RETR & MCP
+      AwareCM --> RETR & MCP
+    end
+
+    %% Qodo Gen
+    subgraph Gen[Qodo Gen - Agentic Mode]
+      GENAPI[Gen backend services]
+      JOBS[Helm Jobs:<br/>• db-migration - alembic<br/>• db-partition-create-init]
+      CRONS[CronJobs - daily 01:00:<br/>• db-partition-create<br/>• db-partition-delete]
+      FLAGS[Feature flags via Secret/env:<br/>agentic_support<br/>lean_agent_enabled<br/>custom_mcp_enabled<br/>langgraph_checkpointer=postgres]
+      FLAGS --> GENAPI
+      JOBS --> GENAPI
+      CRONS --> GENAPI
+    end
+
+    %% Qodo Merge
+    subgraph Merge[Qodo Merge]
+      WEBHOOK[Webhook/PR listener<br/>Gunicorn+Uvicorn server<br/>Service :3000]
+      ORCH[Request handling & tools]
+      SIDE[Analytics sidecar - opt]
+      SETTINGS[Secret: qodo-merge-settings<br/>contains .secrets.toml]
+      CM[ConfigMap: env, analytics, idp]
+      SETTINGS --> WEBHOOK & ORCH
+      CM --> WEBHOOK & ORCH & SIDE
+      ORCH --> SIDE
+    end
+
+    Ingress[Ingress/ALB/GLB]
+    Ingress --> WEBHOOK
+    Ingress --> MCP
+  end
+
+  %% Data layer
+  subgraph Data[PostgreSQL 17]
+    PG[(Instance :5432)]
+    RAGDB[(DB: rag-indexer<br/>pgvector enabled)]
+    METADB[(DB: metadata)]
+    AGENTIC[(DB: agentic)]
+  end
+  PG --- RAGDB
+  PG --- METADB
+  PG --- AGENTIC
+
+  %% Flows
+  GH & GL & BB -- PR events/webhooks --> Ingress
+  WEBHOOK --> ORCH --> LLMs
+  ORCH -- post comments/labels --> Git
+
+  GH & GL & BB -- clone/list/repos --> INDEXER
+  INDEXER -- chunks+embeddings --> RAGDB
+  METADATA -- repo/org metadata --> METADB
+  RETR -- retrieve context --> RAGDB & METADB
+
+  VS & JB --> GENAPI
+  GENAPI --> AGENTIC
+  GENAPI --> LLMs
+
+  %% Optional cross-product wiring
+  ORCH -- context if enabled --> RETR
