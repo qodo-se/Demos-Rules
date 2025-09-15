@@ -9,14 +9,12 @@ enable_large_pr_handling = true
 generate_ai_title = true
 extra_instructions = ""
 
-[pr_reviewer]
+[pr_compliance]
+enable_todo_scan = true
 enable_help_text = true
-num_max_findings = 10
-require_todo_scan=true
-require_score_review = true
-require_can_be_split_review = true
-enable_review_labels_security = true
-extra_instructions = ""
+enable_ticket_labels = true
+enable_no_ticket_labels = true
+check_pr_additional_content = true
 
 [pr_code_suggestions]
 enable_help_text = true
