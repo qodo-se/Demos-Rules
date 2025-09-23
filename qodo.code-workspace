@@ -1,13 +1,24 @@
 {
     "folders": [
         {
+            "name": "Demos",
             "path": "."
         },
         {
-            "path": "../../../.qodo"
+            "name": "codebaseintel-backend",
+            "path": "../codebaseintel-backend"
         },
         {
-            "path": "../github-codium-ai"
+            "name": "codebaseintel-frontend",
+            "path": "../codebaseintel-frontend"
+        },
+        {
+            "name": "codebaseintel-public",
+            "path": "../codebaseintel-public"
+        },
+        {
+            "name": ".qodo",
+            "path": "../../../.qodo"
         }
     ],
     "tasks": {
