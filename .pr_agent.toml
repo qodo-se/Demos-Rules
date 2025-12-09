@@ -1,5 +1,5 @@
 [config]
-model="gemini-2.5-pro"
+model = "gemini-2.5-pro"
 fallback_models = ["GPT-5-pro", "gpt-5"]
 
 [pr_description]
@@ -29,7 +29,7 @@ pr_commands = [
     "/describe",
     "/compliance",
     "/improve",
-    '/ask "Perform a review as a Security Expert. Create a Threat Model based on the STRIDE framework. If possible, generate a mermaid js diagram to summarize and explain threat vectors. If there are any critical security recommendations, list them. Use markdown to format and highlight headers, sections, sub-sections, list items, todo lists etc."'
+    '/custom_prompt --pr_custom_prompt.prompt="Suggest improvements as an frontend accessibility expert, security expert and performance optimization expert"',
 ]
 
 [gitlab]
@@ -37,7 +37,7 @@ pr_commands = [
     "/describe",
     "/compliance",
     "/improve",
-    '/ask "Perform a review as a Security Expert. Create a Threat Model based on the STRIDE framework. If possible, generate a mermaid js diagram to summarize and explain threat vectors. If there are any critical security recommendations, list them. Use markdown to format and highlight headers, sections, sub-sections, list items, todo lists etc."'
+    '/custom_prompt --pr_custom_prompt.prompt="Suggest improvements as an frontend accessibility expert, security expert and performance optimization expert"',
 ]
 
 [bitbucket_app]
@@ -45,5 +45,5 @@ pr_commands = [
     "/describe",
     "/compliance",
     "/improve",
-    '/ask "Perform a review as a Security Expert. Create a Threat Model based on the STRIDE framework. If possible, generate a mermaid js diagram to summarize and explain threat vectors. If there are any critical security recommendations, list them. Use markdown to format and highlight headers, sections, sub-sections, list items, todo lists etc."'
+    '/custom_prompt --pr_custom_prompt.prompt="Suggest improvements as an frontend accessibility expert, security expert and performance optimization expert"',
 ]
