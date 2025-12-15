@@ -1,11 +1,16 @@
 {
     "folders": [
         {
-            "name": "Demos",
-            "path": "."
+            "name": "~/Work/Qodo/Demos",
+            "path": "/Users/sri/Work/Qodo/Demos"
         },
         {
-            "path": "../POVs"
+            "name": "~/Work/Qodo/POVs",
+            "path": "/Users/sri/Work/Qodo/POVs"
+        },
+        {
+            "name": "~/.qodo",
+            "path": "/Users/sri/.qodo"
         }
     ],
     "tasks": {
