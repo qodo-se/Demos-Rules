@@ -24,6 +24,12 @@ suggestions_depth = "exhaustive"
 enable_suggestion_type_reuse = true
 num_best_practice_suggestions = 100
 
+[review_agent]
+enabled = true
+publish_output = true
+enable_issues_agent = true
+enable_compliance_agent = true
+
 [github_app]
 pr_commands = [
     "/agentic_review",
