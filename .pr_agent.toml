@@ -59,3 +59,6 @@ pr_commands = [
     "/agentic_review",
     "/agentic_describe",
 ]
+
+[pr_compliance]
+enable_rules_platform = true
